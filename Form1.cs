@@ -17,6 +17,9 @@ namespace bloodbank
         int MValX;
         int MValY;
 
+       // For Dropdown Menu.
+        private bool isCollapsed;
+
         public Form1()
         {
             InitializeComponent();
@@ -60,6 +63,34 @@ namespace bloodbank
             {
                 this.SetDesktopLocation(MousePosition.X - MValX, MousePosition.Y - MValY);
             }
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (isCollapsed)
+            {
+                dropdownbtn.Image = Resources.icons8_expand_arrow_30___up;
+                paneldropdown.Height += 10;
+                if (paneldropdown.Size == paneldropdown.MaximumSize)
+                {
+                    timer1.Stop();
+                    isCollapsed = false;
+                }
+            }
+            else
+            {
+                dropdownbtn.Image = Resources.icons8_expand_arrow_30;
+                paneldropdown.Height -= 10;
+                if (paneldropdown.Size == paneldropdown.MinimumSize)
+                {
+                    timer1.Stop();
+                    isCollapsed = true;
+                }
+            }
+        }
+
+        private void dropdownbtn_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
         }
     }
 }
