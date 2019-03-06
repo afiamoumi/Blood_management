@@ -32,5 +32,11 @@ namespace bloodbank
             sideActivePanel.Top = addDonarbtn.Top;
             adddonarwindow1.BringToFront();
         }
+        private void donorListbtn_Click(object sender, EventArgs e)
+        {
+            sideActivePanel.Height = donorListbtn.Height;
+            sideActivePanel.Top = donorListbtn.Top;
+            donarlistwindow1.BringToFront();
+        }
     }
 }
