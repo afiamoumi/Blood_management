@@ -17,7 +17,7 @@ namespace bloodbank
         int MValX;
         int MValY;
 
-       // For Dropdown Menu.
+        // For Dropdown Menu.
         private bool isCollapsed;
 
         public Form1()
@@ -33,18 +33,54 @@ namespace bloodbank
             sideActivePanel.Top = homebtn.Top;
             homewindow1.BringToFront();
         }
+
         private void addDonarbtn_Click(object sender, EventArgs e)
         {
             sideActivePanel.Height = addDonarbtn.Height;
             sideActivePanel.Top = addDonarbtn.Top;
             adddonarwindow1.BringToFront();
         }
+
         private void donorListbtn_Click(object sender, EventArgs e)
         {
             sideActivePanel.Height = donorListbtn.Height;
             sideActivePanel.Top = donorListbtn.Top;
             donarlistwindow1.BringToFront();
         }
+
+        private void supply_blood_btn_Click(object sender, EventArgs e)
+        {
+            sideActivePanel.Height = supply_blood_btn.Height;
+            sideActivePanel.Top = supply_blood_btn.Top;
+            supplybloodwindow1.BringToFront();
+        }
+
+        private void blooddonatebtn_Click(object sender, EventArgs e)
+        {
+            sideActivePanel.Height = blooddonatebtn.Height;
+            sideActivePanel.Top = blooddonatebtn.Top;
+            blooddonate1.BringToFront();
+        }
+
+        private void updatedonarpro_Click(object sender, EventArgs e)
+        {
+            sideActivePanel.Height = updatedonarpro.Height;
+            sideActivePanel.Top = updatedonarpro.Top;
+            updatedonarpro1.BringToFront();
+        }
+        
+        private void searchdonarmenu_Click(object sender, EventArgs e)
+        {
+            sideActivePanel.Height = searchdonarmenu.Height;
+            sideActivePanel.Top = searchdonarmenu.Top;
+            searchdonarwindow1.BringToFront();
+        }
+
+        private void closethis(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void panel2_MouseDown(object sender, MouseEventArgs e)
         {
             TogMove = 1;
@@ -64,6 +100,7 @@ namespace bloodbank
                 this.SetDesktopLocation(MousePosition.X - MValX, MousePosition.Y - MValY);
             }
         }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (isCollapsed)
@@ -92,5 +129,7 @@ namespace bloodbank
         {
             timer1.Start();
         }
+
+        
     }
 }
