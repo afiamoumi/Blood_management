@@ -29,11 +29,11 @@ namespace bloodbank
 
         private void namebox_TextChanged(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-SL46HBO\\SQLEXPRESS;Initial Catalog=TestDb;Integrated Security=True";
+            string connectionString = "Data Source=DESKTOP-SL46HBO\\SQLEXPRESS;Initial Catalog=donorAppDb;Integrated Security=True";
 
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
-            string query = "SELECT * FROM h WHERE name = '"+ namebox.Text + "'";
+            string query = "SELECT * FROM donorInfo WHERE name = '" + namebox.Text + "'";
 
             //Command Execute
             SqlCommand command = new SqlCommand(query, connection);
@@ -47,6 +47,60 @@ namespace bloodbank
             
             
 
+        }
+
+        private void searchbyaddress_TextChanged(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=DESKTOP-SL46HBO\\SQLEXPRESS;Initial Catalog=donorAppDb;Integrated Security=True";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            string query = "SELECT * FROM donorInfo WHERE address = '" + searchbyaddress.Text + "'";
+
+            //Command Execute
+            SqlCommand command = new SqlCommand(query, connection);
+
+            SqlDataReader sdr = command.ExecuteReader();
+            dt.Load(sdr);
+            //Showing data in the gridview
+            donorrecordgridview.DataSource = dt;
+            connection.Close();
+        }
+
+        private void searchbyid_TextChanged(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=DESKTOP-SL46HBO\\SQLEXPRESS;Initial Catalog=donorAppDb;Integrated Security=True";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            string query = "SELECT * FROM donorInfo WHERE donrid = '" + searchbyid.Text + "'";
+
+            //Command Execute
+            SqlCommand command = new SqlCommand(query, connection);
+
+            SqlDataReader sdr = command.ExecuteReader();
+            dt.Load(sdr);
+            //Showing data in the gridview
+            donorrecordgridview.DataSource = dt;
+            connection.Close();
+        }
+
+        private void searchbyblood_TextChanged(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=DESKTOP-SL46HBO\\SQLEXPRESS;Initial Catalog=donorAppDb;Integrated Security=True";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            string query = "SELECT * FROM donorInfo WHERE bloodgroup = '" + searchbyblood.Text + "'";
+
+            //Command Execute
+            SqlCommand command = new SqlCommand(query, connection);
+
+            SqlDataReader sdr = command.ExecuteReader();
+            dt.Load(sdr);
+            //Showing data in the gridview
+            donorrecordgridview.DataSource = dt;
+            connection.Close();
         }
     }
 }
